@@ -148,6 +148,28 @@ edição e excluir as pessoas já existentes.
 A imagem acima apresenta o formulário de cadastro de pessoas.
 
 # Dependências do projeto
+- SpringBoot 2.1.6.RELEASE
+- Lombok
+- Eureka
+- Ribbon
+- Hystrix
+- Zuul
+- Spring Jpa
+- Jwt
+- Springfox
+- H2 Database (Para testes)
+- jjwt-api
+- jjwt-impl
+- jjwt-jackson
+- oauth2-client
+- Spring Web
+- Spring Security
 
 
-##Melhorias para uma nova versão
+
+
+## Melhorias para uma nova versão
+- Criação do chat entre os usuários logados utilizando websocket.
+- Criação do micro serviço de consulta de nome por cpf.
+- Criação do micro serviço de busca de cidades, estados e países.
+- Implantação de novos servidores de autenticação OAuth2.
