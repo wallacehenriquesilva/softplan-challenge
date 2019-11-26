@@ -5,7 +5,7 @@ export const OPEN_SIDEBAR = 'OPEN_SIDEBAR';
 export const CLOSE_SIDEBAR = 'CLOSE_SIDEBAR';
 
 
-export const API_BASE_URL = 'http://165.227.3.54:2207';
+export const API_BASE_URL = 'http://localhost:2207';
 export const ACCESS_TOKEN = 'id_token';
 export const API_BASE_URL_PERSON = API_BASE_URL + '/api/v1/service/data/persons/';
 
