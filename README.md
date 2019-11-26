@@ -30,6 +30,27 @@ Todas as requisições necessitam de autenticação, um token gerado por esse se
 header de cada requisição, o gateway faz o proxy dos serviços utilizando o zuul, e filtra todas as requisições, caso o token
 não seja válido, responde ao cliente o erro, caso o token seja válido, realiza a chamada do micro serviço solicitado e segue o fluxo normalmente.
 
+O Gateway é o responsável por todo o serviço de gerenciamento de usuários, tanto o cadastro quanto a geração de token e gerenciamento
+de autenticação com OAuth2.
+
+**OBS Atualmente esta habilitado apenas o login OAuth2 do github.**
+
+
+## Data Service
+Micro serviço de gerenciamento de dados
+
+# Front
+
+# Base de dados
+
+# Segurança
+
+# Docker
+
+# Execução
+
+# Documentação
+
 
 
 # Telas do sistema
@@ -65,3 +86,5 @@ edição e excluir as pessoas já existentes.
 ![Cadastro de pessoa](/imagens/cadastro_nova_pessoa.png)
 
 A imagem acima apresenta o formulário de cadastro de pessoas.
+
+# Dependências do projeto
