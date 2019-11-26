@@ -61,7 +61,7 @@ Tela de listagem de pessoas, onde é possível fazer operações como filtros
 edição e excluir as pessoas já existentes.
 
 
-## Lista de pessoas
+## Cadastro de pessoa
 ![Cadastro de pessoa](/imagens/cadastro_nova_pessoa.png)
 
 A imagem acima apresenta o formulário de cadastro de pessoas.
