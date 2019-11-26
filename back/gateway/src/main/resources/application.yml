@@ -1,0 +1,213 @@
+server:
+  port: ${SERVER_PORT:2207}
+  undertow:
+    worker-threads: 100
+
+jwt:
+  token:
+    initial: ${JWT_INITIAL:Bearer}
+    header: Authorization
+    secret: ${JWT_SECRET:D85462TPl4nCHAlL3n985621pl4y3rS3CREtK3C01W4ltl9999999999ir1nT4nsH1b}
+    expiration: 28800
+
+cookie:
+  redirect-name: redirect_uri
+  oauth2-authorization: oauth2_auth_request
+  expired-time: 180
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%-5level] %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n"
+  file:
+    name: ./logs/development/log-development-@project.artifactId@-@project.version@.log
+    max-size: 5MB
+    max-history: 1
+
+spring:
+  profiles: development
+  application:
+    name: softplan-challenge-gateway
+
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/db
+    username: user
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 5
+
+  jpa:
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: ${GITHUB_CLIENT_ID:client_id}
+            clientSecret: ${GITHUB_CLIENT_SECRET:client_secret}
+            redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - user:email
+              - read:user
+          google:
+            clientId: ${GOOGLE_CLIENT_ID:client_id}
+            clientSecret: ${GOOGLE_CLIENT_SECRET:cliet_secret}
+          facebook:
+            clientId: ${FACEBOOK_CLIENT_ID:client_id}
+            clientSecret: ${FACEBOOK_CLIENT_SECRET:cliet_secret}
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_PATH:http://localhost:8763/eureka}
+    healthcheck:
+      enabled: true
+
+
+zuul:
+  routes:
+    data-service:
+      path: /api/v1/service/data/**
+      serviceId: SOFTPLAN-CHALLENGE-DATA-SERVICE
+      strip-prefix: false
+  add-proxy-headers: true
+  add-host-header: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        iso lation:
+          thread:
+            timeoutInMilliseconds: 30000
+
+
+ribbon:
+  ReadTimeout: 60000
+  connection-timeout: 3000
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
+  eureka:
+    enabled: true
+
+
+documentation:
+  swagger:
+    v2:
+      path:  /{spring.name}/api-docs
+    services:
+      - name: Gateway
+        url: /gateway/api-docs
+        version: 2.0
+      - name: Data Service
+        url: /data-service/api-docs
+        version: 2.0
+
+---
+
+server:
+  port: ${SERVER_PORT:2207}
+  undertow:
+    worker-threads: 100
+
+jwt:
+  token:
+    initial: ${JWT_INITIAL:Bearer}
+    header: Authorization
+    secret: ${JWT_SECRET:as5d56asd4as56d16as51dsa561d651h61f56h1df6g1j68f1g6h51gf61sadashdua}
+    expiration: 28800
+
+cookie:
+  redirect-name: redirect_uri
+  oauth2-authorization: oauth2_auth_request
+  expired-time: 180
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%-5level] %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: ./logs/production/log-production-@project.artifactId@-@project.version@.log
+    max-size: 10MB
+    max-history: 10
+
+spring:
+  profiles: production
+  application:
+    name: softplan-challenge-gateway
+
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/db
+    username: user
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 5
+
+  jpa:
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: ${GITHUB_CLIENT_ID:client_id}
+            clientSecret: ${GITHUB_CLIENT_SECRET:clientId:client_secret}
+            redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - user:email
+              - read:user
+          google:
+            clientId: ${GOOGLE_CLIENT_ID:client_id}
+            clientSecret: ${GOOGLE_CLIENT_SECRET:cliet_secret}
+          facebook:
+            clientId: ${FACEBOOK_CLIENT_ID:client_id}
+            clientSecret: ${FACEBOOK_CLIENT_SECRET:cliet_secret}
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_PATH:http://localhost:8763/eureka}
+    healthcheck:
+      enabled: true
+
+zuul:
+  routes:
+    data-service:
+      path: /api/v1/service/data/**
+      serviceId: SOFTPLAN-CHALLENGE-DATA-SERVICE
+      strip-prefix: false
+  add-proxy-headers: true
+  add-host-header: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        iso lation:
+          thread:
+            timeoutInMilliseconds: 30000
+
+
+ribbon:
+  ReadTimeout: 60000
+  connection-timeout: 3000
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
+  eureka:
+    enabled: true

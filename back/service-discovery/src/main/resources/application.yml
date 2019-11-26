@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: service-discovery
+server:
+  port: 8763
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: ${eureka-path:http://localhost:${server.port}/eureka/}
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%-5level] %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n"
+  file:
+    name: ./logs/development/log-development-@project.artifactId@-@project.version@.log
+    max-size: 5MB
+    max-history: 1

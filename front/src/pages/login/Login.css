@@ -1,0 +1,52 @@
+.login-container {
+    text-align: center;
+}
+
+
+.login-content {
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    border-radius: 2px;
+    width: 500px;
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.social-login ul li {
+    display: inline-block;
+    padding-right: 4px;
+    align-items: center
+}
+
+.social-btn {
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 16px;
+    float: right;
+}
+
+.social-btn img {
+    height: 32px;
+
+    margin-top: 10px;
+}
+
+.social-btn.google {
+    margin-top: 10px;
+    margin-left: 3px;
+}
+
+.social-btn.google img {
+    margin-top: 10px;
+    margin-left: 3px;
+}
+
+.social-btn.facebook img {
+    height: 24px;
+    margin-left: 3px;
+}
+
+.social-btn.github img {
+    height: 24px;
+    margin-left: 3px;
+}
+

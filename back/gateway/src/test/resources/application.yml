@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: softplan-challenge-gateway-test
+
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: github-client-id
+            clientSecret: github-client-secret
+            scope:
+              - user:email
+              - read:user
+          google:
+            client-id: google-client-id
+            client-secret: google-client-secret
+          facebook:
+            client-id: facebook-client-id
+            client-secret: facebook-client-secret
+
+  datasource:
+    url: jdbc:h2:mem:softplan-challenge-gateway-test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%-5level] %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: ./logs/test/log-gateway-test.log
+    max-size: 10MB
+    max-history: 1
+
+eureka:
+  client:
+    enabled: false
+    registerWithEureka: false
+
+jwt:
+  token:
+    initial: Bearer
+    header: Authorization
+    secret: D3vS0fTPl4nCHAlL3nGEsoFTpl4y3rS3CREtK3C01W4ltlb4C3s512V4ir1nT4nsH1b
+    expiration: 28800
+
+cookie:
+  redirect-name: redirect_uri
+  oauth2-authorization: oauth2_auth_request
+  expired-time: 180

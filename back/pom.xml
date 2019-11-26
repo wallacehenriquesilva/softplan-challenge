@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>service-discovery</module>
+        <module>gateway</module>
+        <module>dataservice</module>
+    </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>br.com.wallace</groupId>
+    <artifactId>softplan-challenge</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>softplan-challenge</name>
+    <description>Java softplan challenge for people register.</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <h2.version>1.4.200</h2.version>
+        <swagger.version>2.9.2</swagger.version>
+        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.2.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <!--    <repositories>-->
+    <!--        <repository>-->
+    <!--            <id>spring-milestones</id>-->
+    <!--            <name>Spring Milestones</name>-->
+    <!--            <url>https://repo.spring.io/milestone</url>-->
+    <!--        </repository>-->
+    <!--    </repositories>-->
+
+</project>

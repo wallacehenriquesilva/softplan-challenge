@@ -1,0 +1,92 @@
+server:
+  port: ${SERVER_PORT:8081}
+  undertow:
+    worker-threads: 100
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%-5level] %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n"
+  file:
+    name: ./logs/development/log-development-@project.artifactId@-@project.version@.log
+    max-size: 5MB
+    max-history: 1
+
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /api/v1/service/data/v2/api-docs
+
+spring:
+  profiles: development
+  application:
+    name: softplan-challenge-data-service
+
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/db
+    username: user
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 5
+
+  jpa:
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_PATH:http://localhost:8763/eureka}
+
+---
+server:
+  port: ${SERVER_PORT:8081}
+  undertow:
+    worker-threads: 100
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%-5level] %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: ./logs/production/log-production-@project.artifactId@-@project.version@.log
+    max-size: 10MB
+    max-history: 10
+
+spring:
+  profiles: production
+  application:
+    name: softplan-challenge-data-service
+
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/db
+    username: user
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 5
+
+  jpa:
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_PATH:http://localhost:8763/eureka}
